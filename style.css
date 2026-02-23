@@ -1278,6 +1278,23 @@ a:hover {
 /* =========================================
    ANIMATIONS & EFFECTS
    ========================================= */
+
+/* Fallback: show content after 2s if JS animations fail */
+.animate-up:not(.in-view) {
+  animation: fallbackShow 0.5s ease-out 2s forwards;
+}
+
+.fade-in-right:not(.in-view) {
+  animation: fallbackShow 0.5s ease-out 2s forwards;
+}
+
+@keyframes fallbackShow {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 .animate-up {
   opacity: 0;
   transform: translateY(30px);

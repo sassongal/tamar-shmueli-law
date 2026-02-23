@@ -21,7 +21,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    
+
+    <!-- Fallback: ensure content is visible even if JS animations fail -->
+    <noscript>
+      <style>
+        .animate-up, .fade-in-right { opacity: 1 !important; transform: none !important; }
+      </style>
+    </noscript>
+
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
