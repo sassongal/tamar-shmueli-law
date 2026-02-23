@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.tamar-shmueli.co.il/sitemap.xml

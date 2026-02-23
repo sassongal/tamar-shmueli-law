@@ -1,0 +1,28 @@
+{
+  "name": "תמר שמואלי - עורכת דין ונוטריון",
+  "short_name": "Tamar Shmuely",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#664395",
+  "description": "ליווי משפטי מקיף בדיני מקרקעין, משפחה, צוו​אות וירושות, ושירותי נוטריון בחיפה.",
+  "icons": [
+    {
+      "src": "/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
