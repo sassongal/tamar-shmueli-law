@@ -16,3 +16,4 @@ squirrel.toml
 
 # Server logs
 *.log
+.vercel

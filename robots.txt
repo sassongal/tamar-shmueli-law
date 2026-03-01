@@ -1,4 +1,15 @@
+# Robots.txt — Tamar Shmueli Law Office
+# https://www.tamar-shmueli.co.il/
+
 User-agent: *
 Allow: /
+Allow: /privacy.html
+Allow: /terms.html
+Allow: /accessibility.html
+Allow: /llms.txt
+Disallow: /.vercel/
+Disallow: /.git/
+Disallow: /assets/
 
+# Sitemap
 Sitemap: https://www.tamar-shmueli.co.il/sitemap.xml
