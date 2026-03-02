@@ -276,7 +276,8 @@
         </picture>
       </div>
       <div class="hero-bg-overlay"></div>
-      <div class="container hero-container">
+      <!-- Hero Top: Image + Text Side by Side -->
+      <div class="container hero-top">
         <div class="hero-image-main">
           <picture>
             <source srcset="images/profile.webp" type="image/webp">
@@ -284,37 +285,42 @@
           </picture>
         </div>
 
-        <div class="hero-content-wrapper">
-          <div class="hero-content">
-            <span class="badge">מעל 30 שנות ניסיון משפטי</span>
-            <h1>
-              הבית שלך במקרקעין ובמשפחה - <span class="highlight">32 שנות מומחיות</span> וליווי אישי ללא פשרות
-            </h1>
-            <p>
-              מעטפת שירותים של משרד בוטיק <strong>בחיפה</strong> המתמחה בעסקאות נדל"ן, מיסוי, צוואות וייפוי כוח, תוך מלחמה על אינטרס הלקוח עד סיום העסקה.
-            </p>
-          </div>
+        <div class="hero-content">
+          <span class="badge">מעל 30 שנות ניסיון משפטי</span>
+          <h1>
+            הבית שלך במקרקעין ובמשפחה - <span class="highlight">32 שנות מומחיות</span> וליווי אישי ללא פשרות
+          </h1>
+          <p>
+            מעטפת שירותים של משרד בוטיק <strong>בחיפה</strong> המתמחה בעסקאות נדל"ן, מיסוי, צוואות וייפוי כוח, תוך מלחמה על אינטרס הלקוח עד סיום העסקה.
+          </p>
+        </div>
+      </div>
 
-          <!-- Compact Lead Form -->
-          <div class="hero-lead-form">
-            <p class="form-headline"><strong>נתקלתם באתגר משפטי?</strong> צרו קשר עכשיו!</p>
-            <form onsubmit="submitForm(event)" class="compact-form">
-              <div class="form-row">
-                <input type="text" name="name" placeholder="שם מלא" required>
-                <input type="tel" name="phone" placeholder="טלפון" pattern="[0-9]{10}" required>
-                <select name="topic" required>
-                  <option value="">נושא הפנייה</option>
-                  <option value="real-estate">נדל״ן</option>
-                  <option value="inheritance">צוואות וירושה</option>
-                  <option value="notary">נוטריון</option>
-                  <option value="other">אחר</option>
-                </select>
-              </div>
-              <button type="submit" class="btn btn-hero-submit">
-                שלחו פנייה והשאירו לנו לדאוג לשאר
-              </button>
-            </form>
-          </div>
+      <!-- Hero Bottom: Lead Form (Full Width) -->
+      <div class="container">
+        <div class="hero-lead-form">
+          <p class="form-headline"><strong>נתקלתם באתגר משפטי אנו כאן בשבילכם,</strong> צרו קשר עכשיו!</p>
+          <form onsubmit="submitForm(event)" class="compact-form" id="hero-form">
+            <div class="honeypot" style="position: absolute; left: -5000px;" aria-hidden="true">
+              <input type="text" name="honeypot" tabindex="-1" autocomplete="off">
+            </div>
+            <div class="form-row">
+              <input type="text" name="name" placeholder="שם מלא" required aria-label="שם מלא">
+              <input type="tel" name="phone" placeholder="טלפון" pattern="[0-9]{10}" required aria-label="מספר טלפון">
+              <select name="topic" required aria-label="נושא הפנייה">
+                <option value="">נושא הפנייה</option>
+                <option value="real-estate">נדל״ן</option>
+                <option value="inheritance">צוואות וירושה</option>
+                <option value="notary">נוטריון</option>
+                <option value="other">אחר</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-hero-submit">
+              שלחו פנייה והשאירו לנו לדאוג לשאר
+            </button>
+            <p class="form-success-msg" id="hero-form-success" style="display: none;">✅ תודה! הפנייה נשלחה בהצלחה. ניצור איתכם קשר בקרוב.</p>
+            <p class="form-error-msg" id="hero-form-error" style="display: none;">❌ אירעה שגיאה. אנא נסו שוב או צרו קשר בטלפון.</p>
+          </form>
         </div>
       </div>
     </section>
