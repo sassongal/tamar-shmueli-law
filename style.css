@@ -359,9 +359,9 @@ a:hover {
   height: 100%;
   background: linear-gradient(
     to left,
-    rgba(31, 34, 41, 0.5) 0%,
-    rgba(31, 34, 41, 0.3) 50%,
-    rgba(31, 34, 41, 0.15) 100%
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(255, 255, 255, 0.85) 50%,
+    rgba(255, 255, 255, 0.75) 100%
   );
   z-index: 1;
 }
@@ -402,41 +402,37 @@ a:hover {
 .hero-content-right .badge {
   display: inline-block;
   padding: 0.4rem 1rem;
-  background-color: rgba(187, 41, 136, 0.15);
-  color: var(--brand-fuchsia);
+  background-color: var(--brand-fuchsia);
+  color: #fff;
   border-radius: 50px;
   font-weight: 600;
   font-size: 0.9rem;
   margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(222, 24, 131, 0.25);
 }
 
 .hero-content-right h1 {
   font-size: clamp(2rem, 5vw, 3.8rem);
   line-height: 1.15;
   margin-bottom: 1.5rem;
-  color: #fff;
+  color: var(--ink-primary);
   font-weight: 800;
   text-align: right;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .hero-content-right .highlight {
-  background: linear-gradient(
-    to left,
-    var(--brand-cyan),
-    var(--paper)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
+  color: var(--brand-fuchsia);
+  font-weight: 900;
 }
 
 .hero-content-right p {
   font-size: 1.25rem;
   margin-bottom: 2rem;
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--ink-secondary);
   text-align: right;
   line-height: 1.6;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 }
 
 .hero-actions {
