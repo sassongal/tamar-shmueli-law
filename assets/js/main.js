@@ -82,7 +82,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // Accessibility Widget Logic
     const a11yMenu = document.getElementById('a11y-menu');
-    const a11yBtn = document.getElementById('a11y-btn');
     let currentFontSize = 100;
     let isHighContrast = false;
     let isHighlightLinks = false;
