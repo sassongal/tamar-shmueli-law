@@ -2139,7 +2139,7 @@ p {
 
 .team-card {
   display: grid;
-  grid-template-columns: 380px 1fr;
+  grid-template-columns: minmax(300px, 380px) 1fr;
   gap: var(--space-4);
   padding: var(--space-4);
   background: var(--paper-pure);
@@ -2147,6 +2147,8 @@ p {
   border-top: 4px solid var(--brand-indigo);
   position: relative;
   overflow: hidden;
+  max-width: var(--container-default);
+  margin: 0 auto var(--space-4);
 }
 
 /* Subtle glow effect on hover */
