@@ -1672,21 +1672,7 @@ a:hover {
 /* ========================
    Team Grid (Cards)
    ======================== */
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-xl);
-  margin-top: var(--space-2xl);
-}
-
-@media (max-width: 640px) {
-  .team-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
-  }
-}
-
-/* Team card styles moved to line 2242+ - using grid layout */
+/* Team grid styles moved to line 2135+ - using single column layout */
 
 @media (prefers-reduced-motion: reduce) {
   *,
