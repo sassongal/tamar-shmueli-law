@@ -114,6 +114,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  /* ——— Touch/Swipe Support ——— */
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  track.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+
+  track.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    const threshold = 50;
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) > threshold) {
+      if (diff > 0) {
+        goTo(current < items.length - 1 ? current + 1 : 0);
+      } else {
+        goTo(current > 0 ? current - 1 : items.length - 1);
+      }
+    }
+  }
+
   /* ——— Scroll-snap sync ——— */
   let scrollTimer;
   track.addEventListener("scroll", () => {

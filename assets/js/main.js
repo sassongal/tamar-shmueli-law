@@ -47,7 +47,7 @@ async function submitForm(event) {
 function trackClick(label) { console.log('Click:', label); }
 
 window.addEventListener('DOMContentLoaded', () => {
-    // Mobile Menu
+    // Mobile Menu - Bottom Sheet
     const toggle = document.querySelector('.menu-toggle');
     const mobileNav = document.getElementById('mobile-nav');
     if (toggle && mobileNav) {
@@ -55,6 +55,7 @@ window.addEventListener('DOMContentLoaded', () => {
             const isOpened = toggle.getAttribute('aria-expanded') === 'true';
             toggle.setAttribute('aria-expanded', !isOpened);
             mobileNav.classList.toggle('is-active');
+            mobileNav.setAttribute('aria-hidden', isOpened ? 'true' : 'false');
             mobileNav.hidden = isOpened;
             mobileNav.inert = isOpened;
             document.body.style.overflow = isOpened ? '' : 'hidden';
@@ -65,6 +66,7 @@ window.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 toggle.setAttribute('aria-expanded', 'false');
                 mobileNav.classList.remove('is-active');
+                mobileNav.setAttribute('aria-hidden', 'true');
                 mobileNav.hidden = true;
                 mobileNav.inert = true;
                 document.body.style.overflow = '';
@@ -72,13 +74,66 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add('in-view');
+    // Enhanced Animations with Stagger
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const animationObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                const delay = index * 100;
+                setTimeout(() => {
+                    entry.target.classList.add('in-view');
+                }, delay);
+                animationObserver.unobserve(entry.target);
+            }
         });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.animate-up, .fade-in-right').forEach(el => observer.observe(el));
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-up, .fade-in-right, .stagger-item').forEach(el => {
+        animationObserver.observe(el);
+    });
+
+    // Parallax Effect on Hero
+    const heroBackground = document.querySelector('.hero-cover');
+    if (heroBackground) {
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const parallaxSpeed = 0.5;
+            heroBackground.style.transform = `translateY(${scrollY * parallaxSpeed}px)`;
+        }, { passive: true });
+    }
+
+    // Number Counter Animation
+    function animateNumber(element, start, end, duration) {
+        const range = end - start;
+        const increment = range / (duration / 16);
+        let current = start;
+
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= end) {
+                current = end;
+                clearInterval(timer);
+            }
+            element.textContent = Math.floor(current);
+        }, 16);
+    }
+
+    const numberElements = document.querySelectorAll('.stat-number');
+    const numberObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = parseInt(entry.target.dataset.target) || parseInt(entry.target.textContent);
+                animateNumber(entry.target, 0, target, 2000);
+                numberObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    numberElements.forEach(el => numberObserver.observe(el));
 
     // Accessibility Widget Logic
     const a11yMenu = document.getElementById('a11y-menu');
