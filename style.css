@@ -338,11 +338,11 @@ a:hover {
    HERO
    ========================================= */
 .hero {
-  padding: 4rem 0 4rem;
+  padding: 4rem 0 6rem;
   background: transparent;
   overflow: visible;
   position: relative;
-  min-height: 85vh;
+  min-height: 90vh;
 }
 
 .hero-cover {
@@ -358,7 +358,7 @@ a:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
 }
 
 .hero-bg-overlay {
@@ -383,9 +383,9 @@ a:hover {
   align-items: flex-start;
   position: relative;
   z-index: 2;
-  min-height: 60vh;
-  padding-top: var(--space-6);
-  padding-bottom: var(--space-5);
+  min-height: 50vh;
+  padding-top: var(--space-5);
+  padding-bottom: 0;
 }
 
 .hero-image-left {
@@ -524,7 +524,7 @@ a:hover {
   position: relative;
   z-index: 2;
   max-width: 750px;
-  margin: 0 auto;
+  margin: var(--space-6) auto 0;
   backdrop-filter: blur(10px);
 }
 
