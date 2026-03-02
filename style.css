@@ -1948,10 +1948,34 @@ h1 {
 h2 {
   font-size: clamp(1.8rem, 4vw, var(--fs-h2));
   font-weight: 700;
-  color: hsl(var(--brand-indigo-h), var(--brand-indigo-s), calc(var(--brand-indigo-l) - 10%));
-  letter-spacing: -0.01em;
   line-height: 1.2;
+  letter-spacing: -0.01em;
   margin-bottom: var(--space-4);
+
+  /* Gradient text with scroll reveal animation */
+  background: linear-gradient(90deg,
+    hsl(var(--brand-fuchsia-h), var(--brand-fuchsia-s), calc(var(--brand-fuchsia-l) - 10%)),
+    hsl(var(--brand-indigo-h), var(--brand-indigo-s), var(--brand-indigo-l)),
+    hsl(var(--brand-cyan-h), var(--brand-cyan-s), var(--brand-cyan-l))
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0; /* Start from right (RTL) */
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 1.2s var(--ease-out-expo);
+}
+
+h2.in-view {
+  background-position: 0% 0; /* Reveal to left */
+}
+
+/* Fallback for browsers without background-clip */
+@supports not (-webkit-background-clip: text) {
+  h2 {
+    color: hsl(var(--brand-indigo-h), var(--brand-indigo-s), calc(var(--brand-indigo-l) - 10%));
+    -webkit-text-fill-color: currentColor;
+  }
 }
 
 h3 {
@@ -1999,6 +2023,26 @@ p {
   color: hsl(var(--brand-cyan-h), var(--brand-cyan-s), calc(var(--brand-cyan-l) - 15%));
 }
 
+/* Text Reveal Animation with Stagger */
+.text-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s var(--ease-out-expo);
+}
+
+.text-reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.text-reveal:nth-child(1) { transition-delay: 0ms; }
+.text-reveal:nth-child(2) { transition-delay: 100ms; }
+.text-reveal:nth-child(3) { transition-delay: 200ms; }
+.text-reveal:nth-child(4) { transition-delay: 300ms; }
+.text-reveal:nth-child(5) { transition-delay: 400ms; }
+.text-reveal:nth-child(6) { transition-delay: 500ms; }
+
 /* ===========================
    SERVICE CARDS - Clean Equal Grid
    NO Bento Grid, NO Magnetic Hover
@@ -2013,32 +2057,130 @@ p {
 }
 
 .service-card {
-  background: var(--paper-pure);
-  border-radius: var(--radius-md);  /* 8px - subtle */
-  padding: var(--space-4);
-  border-right: 3px solid var(--brand-fuchsia);  /* Accent bar - simple & clean */
-  transition: all var(--transition-base);
   position: relative;
+  background: var(--paper-pure);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  border-right: 3px solid transparent;
+  transition: all var(--transition-base);
+
+  /* Initial state - before scroll reveal */
+  opacity: 0;
+  transform: translateY(30px);
 }
 
-/* Simple hover - no 3D gimmicks */
+/* Layer 1 - Scroll Reveal */
+.service-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Layer 2 - Hover State with HSL background gradient */
 .service-card:hover {
-  transform: translateY(-4px);  /* Subtle lift */
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-6px);
+  box-shadow:
+    var(--shadow-card-hover),
+    0 0 0 1px var(--card-accent-color-light);
+  background: linear-gradient(
+    135deg,
+    var(--paper-pure) 0%,
+    hsla(var(--card-h), var(--card-s), calc(var(--card-l) + 45%), 0.03) 100%
+  );
 }
 
-/* Color-coded accent bars (RTL: border-right) */
-.service-card:nth-child(1) { border-right-color: var(--brand-fuchsia); }
-.service-card:nth-child(2) { border-right-color: var(--brand-cyan); }
-.service-card:nth-child(3) { border-right-color: var(--brand-teal); }
-.service-card:nth-child(4) { border-right-color: var(--brand-lime); }
-.service-card:nth-child(5) { border-right-color: var(--brand-plum); }
-.service-card:nth-child(6) { border-right-color: var(--brand-indigo); }
+/* Individual card colors using CSS custom properties */
+.service-card:nth-child(1) {
+  --card-h: var(--brand-fuchsia-h);
+  --card-s: var(--brand-fuchsia-s);
+  --card-l: var(--brand-fuchsia-l);
+  --card-accent-color: var(--brand-fuchsia);
+  --card-accent-color-light: hsl(var(--card-h), var(--card-s), calc(var(--card-l) + 15%));
+}
+
+.service-card:nth-child(2) {
+  --card-h: var(--brand-cyan-h);
+  --card-s: var(--brand-cyan-s);
+  --card-l: var(--brand-cyan-l);
+  --card-accent-color: var(--brand-cyan);
+  --card-accent-color-light: hsl(var(--card-h), var(--card-s), calc(var(--card-l) + 15%));
+}
+
+.service-card:nth-child(3) {
+  --card-h: var(--brand-teal-h);
+  --card-s: var(--brand-teal-s);
+  --card-l: var(--brand-teal-l);
+  --card-accent-color: var(--brand-teal);
+  --card-accent-color-light: hsl(var(--card-h), var(--card-s), calc(var(--card-l) + 15%));
+}
+
+.service-card:nth-child(4) {
+  --card-h: var(--brand-lime-h);
+  --card-s: var(--brand-lime-s);
+  --card-l: var(--brand-lime-l);
+  --card-accent-color: var(--brand-lime);
+  --card-accent-color-light: hsl(var(--card-h), var(--card-s), calc(var(--card-l) + 15%));
+}
+
+.service-card:nth-child(5) {
+  --card-h: var(--brand-plum-h);
+  --card-s: var(--brand-plum-s);
+  --card-l: var(--brand-plum-l);
+  --card-accent-color: var(--brand-plum);
+  --card-accent-color-light: hsl(var(--card-h), var(--card-s), calc(var(--card-l) + 15%));
+}
+
+.service-card:nth-child(6) {
+  --card-h: var(--brand-indigo-h);
+  --card-s: var(--brand-indigo-s);
+  --card-l: var(--brand-indigo-l);
+  --card-accent-color: var(--brand-indigo);
+  --card-accent-color-light: hsl(var(--card-h), var(--card-s), calc(var(--card-l) + 15%));
+}
+
+/* Accent border appears on scroll reveal */
+.service-card.in-view {
+  border-right-color: var(--card-accent-color);
+}
+
+/* Layer 3 - Icon Breathing Animation */
+.service-card-icon {
+  width: 56px;
+  height: 56px;
+  margin-bottom: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg,
+    hsl(var(--card-h), var(--card-s), var(--card-l)),
+    hsl(var(--card-h), calc(var(--card-s) - 10%), calc(var(--card-l) - 10%))
+  );
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  animation: iconBreathe 3s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes iconBreathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Performance: Stop animation when not in view */
+.service-card:not(.in-view) .service-card-icon {
+  animation: none;
+}
 
 .service-card h3 {
   font-size: var(--fs-h4);  /* 1.618rem */
   color: var(--ink-primary);
   margin-bottom: var(--space-2);
+  transition: color var(--transition-base);
+}
+
+.service-card:hover h3 {
+  color: hsl(var(--card-h), var(--card-s), calc(var(--card-l) - 5%));
 }
 
 .service-card p {
@@ -2060,15 +2202,17 @@ p {
 }
 
 .feature-card {
-  background: transparent;  /* NO CARD BACKGROUND - cleaner */
+  background: var(--paper-pure);
   padding: var(--space-4);
-  text-align: right;  /* RTL alignment */
-  border-right: 2px solid var(--bg-light);
-  transition: border-color var(--transition-base);
+  border-radius: var(--radius-md);
+  border-top: 3px solid var(--brand-fuchsia);
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  will-change: transform;
+  box-shadow: var(--shadow-sm);
 }
 
 .feature-card:hover {
-  border-right-color: var(--brand-fuchsia);
+  box-shadow: var(--shadow-md);
 }
 
 .feature-icon {
@@ -2112,18 +2256,41 @@ p {
 
 .team-card {
   display: grid;
-  grid-template-columns: 350px 1fr;  /* Fixed image width, fluid content */
+  grid-template-columns: 380px 1fr;
   gap: var(--space-5);
-  align-items: start;
   padding: var(--space-5);
   background: var(--paper-pure);
-  border-radius: var(--radius-sm);  /* 4px - minimal */
+  border-radius: var(--radius-lg);
   border-top: 4px solid var(--brand-indigo);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle glow effect on hover */
+.team-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    hsla(var(--brand-indigo-h), var(--brand-indigo-s), var(--brand-indigo-l), 0.05) 0%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.team-card:hover::before {
+  opacity: 1;
 }
 
 /* Alternate layout for visual interest */
 .team-card:nth-child(even) {
-  grid-template-columns: 1fr 350px;  /* Flip on even cards */
+  grid-template-columns: 1fr 380px;
 }
 
 .team-card-avatar {
@@ -2197,6 +2364,11 @@ details {
 
 details[open] {
   border-right-color: var(--brand-fuchsia);
+  background: linear-gradient(
+    90deg,
+    hsla(var(--brand-fuchsia-h), var(--brand-fuchsia-s), var(--brand-fuchsia-l), 0.02) 0%,
+    var(--paper-pure) 20%
+  );
 }
 
 summary {
@@ -2208,6 +2380,11 @@ summary {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: color var(--transition-base);
+}
+
+summary:hover {
+  color: var(--brand-fuchsia);
 }
 
 summary::after {
@@ -2219,37 +2396,79 @@ summary::after {
 
 details[open] summary::after {
   content: '−';
-  transform: rotate(180deg);
+  transform: rotate(90deg);
 }
 
 .faq-answer {
   margin-top: var(--space-3);
+  padding-right: var(--space-4);
   font-size: var(--fs-base);
   line-height: 1.6;
   color: var(--ink-secondary);
-  padding-right: var(--space-4);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ===========================
-   HERO SECTION - Subtle Vignette Only
-   NO Ken Burns, NO Mesh Gradient, NO Gimmicks
+   HERO SECTION - Breathing Glow Effect
+   Luxury + Creative: Alive, Premium, Professional
    =========================== */
 
-/* Subtle vignette overlay - professional focus */
-.hero-cover::after {
-  content: "";
+.hero-cover {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+/* Breathing Glow - GPU-accelerated animation */
+.hero-cover::before {
+  content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
+  inset: -20px; /* Extends beyond image */
   background: radial-gradient(
-    ellipse at center,
-    transparent 40%,
-    hsla(var(--brand-indigo-h), 50%, 20%, 0.3) 100%
+    circle at center,
+    hsla(var(--brand-fuchsia-h), var(--brand-fuchsia-s), var(--brand-fuchsia-l), 0.15),
+    hsla(var(--brand-indigo-h), var(--brand-indigo-s), var(--brand-indigo-l), 0.12) 40%,
+    hsla(var(--brand-cyan-h), var(--brand-cyan-s), var(--brand-cyan-l), 0.08) 70%,
+    transparent 100%
   );
+  opacity: 0.6;
+  filter: blur(30px);
+  animation: breathe 4s ease-in-out infinite;
+  will-change: transform, opacity;
   pointer-events: none;
+  z-index: 1;
+}
+
+/* Image itself - ensure it's above the glow */
+.hero-cover img {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.85;
+  }
 }
 
 /* ===========================
@@ -2272,8 +2491,45 @@ details[open] summary::after {
 }
 
 /* ===========================
-   ACCESSIBILITY - Reduced Motion
+   ACCESSIBILITY - Reduced Motion & High Contrast
    =========================== */
+
+@media (prefers-reduced-motion: reduce) {
+  /* Disable all animations for accessibility */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  /* Keep essential transforms but remove animations */
+  .hero-cover::before {
+    animation: none;
+    opacity: 0.6;
+    transform: scale(1);
+  }
+
+  .service-card-icon {
+    animation: none;
+  }
+
+  h2 {
+    background-position: 0% 0;
+    transition: none;
+  }
+}
+
+@media (prefers-contrast: high) {
+  .service-card {
+    border-right-width: 4px;
+  }
+
+  h2 {
+    -webkit-text-fill-color: var(--ink-primary);
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *,

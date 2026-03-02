@@ -74,12 +74,54 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Enhanced Animations with Stagger
+    // Enhanced Animations with Stagger - Layered Experience
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.2,
+        rootMargin: '0px 0px -100px 0px'
     };
 
+    // Service Cards - Stagger animation
+    const serviceCards = document.querySelectorAll('.service-card');
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('in-view');
+                }, index * 100);
+                cardObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    serviceCards.forEach(card => cardObserver.observe(card));
+
+    // Typography - Gradient reveal on scroll
+    const headings = document.querySelectorAll('h2');
+    const headingObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                headingObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    headings.forEach(h => headingObserver.observe(h));
+
+    // Text Reveal - Staggered paragraphs
+    const textReveals = document.querySelectorAll('.text-reveal');
+    const textObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                textObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    textReveals.forEach(el => textObserver.observe(el));
+
+    // Original stagger animation for other elements
     const animationObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
@@ -105,6 +147,26 @@ window.addEventListener('DOMContentLoaded', () => {
             heroBackground.style.transform = `translateY(${scrollY * parallaxSpeed}px)`;
         }, { passive: true });
     }
+
+    // Feature Cards - Subtle Floating Parallax
+    const featureCards = document.querySelectorAll('.feature-card');
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const scrollY = window.scrollY;
+                featureCards.forEach((card, index) => {
+                    const depth = (index % 3) + 1; // 1, 2, or 3
+                    const movement = scrollY * 0.05 * depth; // Very subtle
+                    card.style.transform = `translateY(${movement}px)`;
+                    card.dataset.depth = depth;
+                });
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
 
     // Number Counter Animation
     function animateNumber(element, start, end, duration) {

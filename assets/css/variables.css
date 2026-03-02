@@ -163,6 +163,10 @@
   --shadow-lg: 0 8px 24px rgba(90, 60, 30, 0.12);
   --shadow-hover: 0 12px 32px rgba(90, 60, 30, 0.14);
 
+  /* Card-specific shadows for layered interactions */
+  --shadow-card-base: 0 2px 8px rgba(90, 60, 30, 0.04);
+  --shadow-card-hover: 0 8px 24px rgba(90, 60, 30, 0.08);
+
   /* ===========================
      BORDERS & RADIUS
      =========================== */
@@ -199,5 +203,16 @@
     --transition-fast: 0.01ms;
     --transition-base: 0.01ms;
     --transition-slow: 0.01ms;
+  }
+}
+
+/* ===========================
+   ACCESSIBILITY SUPPORT
+   =========================== */
+
+@media (prefers-contrast: high) {
+  :root {
+    /* Increase border widths for better visibility */
+    --border-accent-width: 4px;
   }
 }
