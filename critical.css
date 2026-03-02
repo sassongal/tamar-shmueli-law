@@ -345,8 +345,9 @@ a:hover {
 }
 
 .highlight {
-  background: linear-gradient(
-    to left,
-    var(--brand-cyan),
-    var(--paper)
-  );
+  color: var(--ink-primary);
+  font-weight: 900;
+  text-shadow:
+    0 0 20px rgba(222, 24, 131, 0.3),
+    0 2px 4px rgba(0, 0, 0, 0.1);
+}
