@@ -1,0 +1,203 @@
+/*
+ * Design System Variables - Tamar Shmueli Law Office
+ * Based on Golden Ratio (φ = 1.618) & HSL Color System
+ * Professional, Proportional, Purposeful
+ */
+
+:root {
+  /* ===========================
+     GOLDEN RATIO SYSTEM
+     =========================== */
+  --ratio: 1.618;
+  --base-size: 1rem;  /* 16px baseline */
+
+  /* ===========================
+     TYPOGRAPHY SCALE
+     Based on Golden Ratio
+     =========================== */
+  /* --fs-xs: 0.382rem ≈ 6.11px */
+  --fs-xs: calc(var(--base-size) / var(--ratio) / var(--ratio));
+
+  /* --fs-sm: 0.618rem ≈ 9.89px */
+  --fs-sm: calc(var(--base-size) / var(--ratio));
+
+  /* --fs-base: 1rem = 16px (baseline) */
+  --fs-base: var(--base-size);
+
+  /* --fs-md: 1.618rem ≈ 25.89px */
+  --fs-md: calc(var(--base-size) * var(--ratio));
+
+  /* --fs-lg: 2.618rem ≈ 41.89px */
+  --fs-lg: calc(var(--base-size) * var(--ratio) * var(--ratio));
+
+  /* --fs-xl: 4.236rem ≈ 67.78px */
+  --fs-xl: calc(var(--base-size) * var(--ratio) * var(--ratio) * var(--ratio));
+
+  /* --fs-2xl: 6.854rem ≈ 109.67px */
+  --fs-2xl: calc(var(--base-size) * var(--ratio) * var(--ratio) * var(--ratio) * var(--ratio));
+
+  /* Typography Application */
+  --fs-body: var(--fs-base);        /* Body text: 1rem */
+  --fs-body-lg: var(--fs-md);       /* Large body: 1.618rem */
+  --fs-h4: var(--fs-md);            /* H4: 1.618rem */
+  --fs-h3: var(--fs-lg);            /* H3: 2.618rem */
+  --fs-h2: var(--fs-xl);            /* H2: 4.236rem */
+  --fs-h1: var(--fs-2xl);           /* H1: 6.854rem */
+
+  /* ===========================
+     SPACING SCALE
+     Based on Golden Ratio
+     =========================== */
+  --space-base: 1rem;  /* 16px */
+
+  /* --space-1: 9.89px ≈ 10px */
+  --space-1: calc(var(--space-base) * 0.618);
+
+  /* --space-2: 16px */
+  --space-2: var(--space-base);
+
+  /* --space-3: 25.89px ≈ 26px */
+  --space-3: calc(var(--space-base) * 1.618);
+
+  /* --space-4: 41.89px ≈ 42px */
+  --space-4: calc(var(--space-base) * 2.618);
+
+  /* --space-5: 67.78px ≈ 68px */
+  --space-5: calc(var(--space-base) * 4.236);
+
+  /* --space-6: 109.66px ≈ 110px */
+  --space-6: calc(var(--space-base) * 6.854);
+
+  /* --space-7: 177.44px ≈ 177px */
+  --space-7: calc(var(--space-base) * 11.09);
+
+  /* Container Max-Widths */
+  --container-narrow: calc(var(--space-base) * 40);   /* 640px */
+  --container-text: calc(var(--space-base) * 50);     /* 800px */
+  --container-default: calc(var(--space-base) * 75);  /* 1200px */
+  --container-wide: calc(var(--space-base) * 90);     /* 1440px */
+
+  /* ===========================
+     HSL COLOR SYSTEM
+     Brand Colors with Variations
+     =========================== */
+
+  /* Fuchsia (#de1883) */
+  --brand-fuchsia-h: 330;
+  --brand-fuchsia-s: 78%;
+  --brand-fuchsia-l: 49%;
+  --brand-fuchsia: hsl(var(--brand-fuchsia-h), var(--brand-fuchsia-s), var(--brand-fuchsia-l));
+  --fuchsia-dark: hsl(var(--brand-fuchsia-h), var(--brand-fuchsia-s), calc(var(--brand-fuchsia-l) - 10%));
+  --fuchsia-light: hsl(var(--brand-fuchsia-h), var(--brand-fuchsia-s), calc(var(--brand-fuchsia-l) + 15%));
+  --fuchsia-muted: hsl(var(--brand-fuchsia-h), calc(var(--brand-fuchsia-s) - 30%), var(--brand-fuchsia-l));
+
+  /* Plum (#9b1c82) */
+  --brand-plum-h: 307;
+  --brand-plum-s: 70%;
+  --brand-plum-l: 36%;
+  --brand-plum: hsl(var(--brand-plum-h), var(--brand-plum-s), var(--brand-plum-l));
+  --plum-dark: hsl(var(--brand-plum-h), var(--brand-plum-s), calc(var(--brand-plum-l) - 10%));
+  --plum-light: hsl(var(--brand-plum-h), var(--brand-plum-s), calc(var(--brand-plum-l) + 15%));
+
+  /* Indigo (#664395) */
+  --brand-indigo-h: 267;
+  --brand-indigo-s: 32%;
+  --brand-indigo-l: 41%;
+  --brand-indigo: hsl(var(--brand-indigo-h), var(--brand-indigo-s), var(--brand-indigo-l));
+  --indigo-dark: hsl(var(--brand-indigo-h), var(--brand-indigo-s), calc(var(--brand-indigo-l) - 10%));
+  --indigo-light: hsl(var(--brand-indigo-h), var(--brand-indigo-s), calc(var(--brand-indigo-l) + 15%));
+
+  /* Cyan (#0096d6) */
+  --brand-cyan-h: 198;
+  --brand-cyan-s: 100%;
+  --brand-cyan-l: 42%;
+  --brand-cyan: hsl(var(--brand-cyan-h), var(--brand-cyan-s), var(--brand-cyan-l));
+  --cyan-dark: hsl(var(--brand-cyan-h), var(--brand-cyan-s), calc(var(--brand-cyan-l) - 10%));
+  --cyan-light: hsl(var(--brand-cyan-h), var(--brand-cyan-s), calc(var(--brand-cyan-l) + 15%));
+
+  /* Teal (#139d74) */
+  --brand-teal-h: 162;
+  --brand-teal-s: 77%;
+  --brand-teal-l: 35%;
+  --brand-teal: hsl(var(--brand-teal-h), var(--brand-teal-s), var(--brand-teal-l));
+  --teal-dark: hsl(var(--brand-teal-h), var(--brand-teal-s), calc(var(--brand-teal-l) - 10%));
+  --teal-light: hsl(var(--brand-teal-h), var(--brand-teal-s), calc(var(--brand-teal-l) + 15%));
+
+  /* Green (#3aa734) */
+  --brand-green-h: 112;
+  --brand-green-s: 52%;
+  --brand-green-l: 42%;
+  --brand-green: hsl(var(--brand-green-h), var(--brand-green-s), var(--brand-green-l));
+  --green-dark: hsl(var(--brand-green-h), var(--brand-green-s), calc(var(--brand-green-l) - 10%));
+  --green-light: hsl(var(--brand-green-h), var(--brand-green-s), calc(var(--brand-green-l) + 15%));
+
+  /* Lime (#b2c623) */
+  --brand-lime-h: 68;
+  --brand-lime-s: 69%;
+  --brand-lime-l: 45%;
+  --brand-lime: hsl(var(--brand-lime-h), var(--brand-lime-s), var(--brand-lime-l));
+  --lime-dark: hsl(var(--brand-lime-h), var(--brand-lime-s), calc(var(--brand-lime-l) - 10%));
+  --lime-light: hsl(var(--brand-lime-h), var(--brand-lime-s), calc(var(--brand-lime-l) + 15%));
+
+  /* ===========================
+     NEUTRAL COLORS
+     Warm Paper Palette
+     =========================== */
+  --paper: #faf7f2;           /* Main background - warm cream */
+  --paper-pure: #ffffff;      /* Pure white for cards */
+  --bg-light: #f2ece3;        /* Slightly deeper cream */
+  --bg-warm: #ebe3d8;         /* Warmest cream */
+  --bg-dark: #1f2229;         /* Dark charcoal */
+
+  /* Text Colors (HSL for better control) */
+  --ink-primary: hsl(0, 0%, 16%);     /* #2a2a2a - Main text */
+  --ink-secondary: hsl(0, 0%, 26%);   /* #414141 - Secondary text */
+  --ink-tertiary: hsl(0, 0%, 50%);    /* #808080 - Muted text */
+  --ink-light: hsl(0, 0%, 65%);       /* Light gray */
+
+  /* ===========================
+     SHADOWS & EFFECTS
+     =========================== */
+  --shadow-sm: 0 2px 8px rgba(90, 60, 30, 0.06);
+  --shadow-md: 0 4px 16px rgba(90, 60, 30, 0.08);
+  --shadow-lg: 0 8px 24px rgba(90, 60, 30, 0.12);
+  --shadow-hover: 0 12px 32px rgba(90, 60, 30, 0.14);
+
+  /* ===========================
+     BORDERS & RADIUS
+     =========================== */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 50px;
+
+  /* ===========================
+     TRANSITIONS
+     =========================== */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition-slow: 600ms cubic-bezier(0.25, 0.8, 0.25, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* ===========================
+   RESPONSIVE ADJUSTMENTS
+   =========================== */
+
+@media (max-width: 768px) {
+  :root {
+    /* Slightly smaller scale on mobile */
+    --fs-h1: calc(var(--fs-xl) * 0.8);  /* ~54px instead of ~110px */
+    --fs-h2: calc(var(--fs-lg) * 0.9);  /* ~38px instead of ~68px */
+    --space-7: calc(var(--space-base) * 8);  /* ~128px instead of ~177px */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0.01ms;
+    --transition-base: 0.01ms;
+    --transition-slow: 0.01ms;
+  }
+}
