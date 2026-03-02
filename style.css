@@ -432,7 +432,7 @@ a:hover {
 }
 
 .hero-content-right .highlight {
-  color: var(--brand-fuchsia);
+  color: var(--ink-primary);
   font-weight: 900;
 }
 
