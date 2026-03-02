@@ -338,13 +338,10 @@ a:hover {
    HERO
    ========================================= */
 .hero {
-  padding: 6rem 0 4rem; /* More top padding for the sticky header */
+  padding: 4rem 0 4rem;
   background: linear-gradient(135deg, #15171c 0%, #2a1b3d 100%);
-  overflow: hidden;
+  overflow: visible;
   position: relative;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
 }
 
 .hero-cover {
@@ -374,12 +371,6 @@ a:hover {
 }
 
 /* Hero Layout - mishari style: Image left, Text right, Form bottom */
-.hero {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-5);
-}
-
 .hero-top {
   display: grid;
   grid-template-columns: 45% 55%;
@@ -387,6 +378,7 @@ a:hover {
   align-items: center;
   position: relative;
   z-index: 2;
+  margin-bottom: var(--space-5);
 }
 
 .hero-image-main {
