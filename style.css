@@ -400,9 +400,6 @@ a:hover {
   max-width: 620px;
   margin-right: 0;
   padding: var(--space-4);
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
-  border-radius: var(--radius-lg);
 }
 
 .hero-content-right .badge {
@@ -677,8 +674,6 @@ a:hover {
     text-align: center;
     padding: var(--space-4);
     margin-right: 0;
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(12px);
   }
 
   .hero-content-right h1,
