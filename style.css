@@ -359,9 +359,9 @@ a:hover {
   height: 100%;
   background: linear-gradient(
     to left,
-    rgba(255, 255, 255, 0.55) 0%,
-    rgba(255, 255, 255, 0.48) 50%,
-    rgba(255, 255, 255, 0.40) 100%
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0.20) 50%,
+    rgba(255, 255, 255, 0.15) 100%
   );
   z-index: 1;
 }
@@ -420,14 +420,10 @@ a:hover {
   font-size: clamp(2rem, 5vw, 3.8rem);
   line-height: 1.25;
   margin-bottom: 1.5rem;
-  color: #0d0d0d;
+  color: #000000;
   font-weight: 800;
   text-align: right;
-  text-shadow:
-    0 0 60px rgba(255, 255, 255, 1),
-    0 0 40px rgba(255, 255, 255, 0.95),
-    0 0 20px rgba(255, 255, 255, 0.9),
-    0 3px 6px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-content-right .highlight {
@@ -442,11 +438,7 @@ a:hover {
   font-weight: 600;
   text-align: right;
   line-height: 1.7;
-  text-shadow:
-    0 0 50px rgba(255, 255, 255, 1),
-    0 0 30px rgba(255, 255, 255, 0.95),
-    0 0 15px rgba(255, 255, 255, 0.9),
-    0 2px 6px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .hero-actions {
@@ -655,9 +647,9 @@ a:hover {
   .hero-bg-overlay {
     background: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.50) 0%,
-      rgba(255, 255, 255, 0.42) 50%,
-      rgba(255, 255, 255, 0.35) 100%
+      rgba(255, 255, 255, 0.20) 0%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.10) 100%
     );
   }
 
@@ -705,8 +697,8 @@ a:hover {
   .hero-bg-overlay {
     background: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.55) 0%,
-      rgba(255, 255, 255, 0.45) 100%
+      rgba(255, 255, 255, 0.20) 0%,
+      rgba(255, 255, 255, 0.15) 100%
     );
   }
 
