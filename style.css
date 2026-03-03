@@ -418,35 +418,36 @@ a:hover {
 
 .hero-content-right h1 {
   font-size: clamp(2rem, 5vw, 3.8rem);
-  line-height: 1.15;
+  line-height: 1.3;
   margin-bottom: 1.5rem;
-  color: var(--ink-primary);
+  color: #1a1a1a;
   font-weight: 800;
   text-align: right;
-  text-shadow:
-    0 3px 8px rgba(0, 0, 0, 0.45),
-    0 2px 4px rgba(0, 0, 0, 0.35),
-    0 1px 2px rgba(0, 0, 0, 0.25);
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 12px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .hero-content-right .highlight {
-  color: var(--ink-primary);
+  color: var(--brand-indigo);
   font-weight: 900;
-  text-shadow:
-    0 3px 10px rgba(0, 0, 0, 0.5),
-    0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .hero-content-right p {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   margin-bottom: 2rem;
-  color: var(--ink-secondary);
+  color: #2a2a2a;
   text-align: right;
-  line-height: 1.6;
-  text-shadow:
-    0 2px 6px rgba(0, 0, 0, 0.35),
-    0 1px 3px rgba(0, 0, 0, 0.3),
-    0 1px 2px rgba(0, 0, 0, 0.2);
+  line-height: 1.7;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 10px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .hero-actions {
