@@ -359,9 +359,9 @@ a:hover {
   height: 100%;
   background: linear-gradient(
     to left,
-    rgba(255, 255, 255, 0.68) 0%,
-    rgba(255, 255, 255, 0.58) 50%,
-    rgba(255, 255, 255, 0.45) 100%
+    rgba(255, 255, 255, 0.82) 0%,
+    rgba(255, 255, 255, 0.75) 50%,
+    rgba(255, 255, 255, 0.68) 100%
   );
   z-index: 1;
 }
@@ -424,13 +424,17 @@ a:hover {
   font-weight: 800;
   text-align: right;
   text-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.3),
-    0 1px 2px rgba(0, 0, 0, 0.2);
+    0 3px 8px rgba(0, 0, 0, 0.45),
+    0 2px 4px rgba(0, 0, 0, 0.35),
+    0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 .hero-content-right .highlight {
   color: var(--ink-primary);
   font-weight: 900;
+  text-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.5),
+    0 2px 5px rgba(0, 0, 0, 0.4);
 }
 
 .hero-content-right p {
@@ -440,8 +444,9 @@ a:hover {
   text-align: right;
   line-height: 1.6;
   text-shadow:
-    0 1px 3px rgba(0, 0, 0, 0.25),
-    0 1px 2px rgba(0, 0, 0, 0.15);
+    0 2px 6px rgba(0, 0, 0, 0.35),
+    0 1px 3px rgba(0, 0, 0, 0.3),
+    0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .hero-actions {
