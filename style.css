@@ -690,8 +690,20 @@ a:hover {
 }
 
 @media (max-width: 576px) {
+  body {
+    background-color: var(--paper) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
   .hero {
     background-image: url('images/hero_bg_mobile.webp');
+    background-color: #2a1b3d !important;
+    background-size: cover !important;
+    background-position: center !important;
+    min-height: 100vh !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   .hero-bg-overlay {
@@ -700,6 +712,15 @@ a:hover {
       rgba(255, 255, 255, 0.20) 0%,
       rgba(255, 255, 255, 0.15) 100%
     );
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .hero-content-right,
+  .hero-content-right h1,
+  .hero-content-right p {
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   .hero h1 {
@@ -712,6 +733,18 @@ a:hover {
   }
   .btn {
     width: 100%;
+  }
+
+  /* Disable animations on mobile to prevent white screen */
+  .animate-up,
+  .fade-in-right {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .hero-content-right * {
+    animation: none !important;
   }
 }
 
