@@ -359,9 +359,9 @@ a:hover {
   height: 100%;
   background: linear-gradient(
     to left,
-    rgba(255, 255, 255, 0.82) 0%,
-    rgba(255, 255, 255, 0.75) 50%,
-    rgba(255, 255, 255, 0.68) 100%
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.48) 50%,
+    rgba(255, 255, 255, 0.40) 100%
   );
   z-index: 1;
 }
@@ -655,9 +655,9 @@ a:hover {
   .hero-bg-overlay {
     background: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.75) 0%,
-      rgba(255, 255, 255, 0.65) 50%,
-      rgba(255, 255, 255, 0.55) 100%
+      rgba(255, 255, 255, 0.50) 0%,
+      rgba(255, 255, 255, 0.42) 50%,
+      rgba(255, 255, 255, 0.35) 100%
     );
   }
 
@@ -705,8 +705,8 @@ a:hover {
   .hero-bg-overlay {
     background: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.82) 0%,
-      rgba(255, 255, 255, 0.72) 100%
+      rgba(255, 255, 255, 0.55) 0%,
+      rgba(255, 255, 255, 0.45) 100%
     );
   }
 
