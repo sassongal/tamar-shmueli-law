@@ -1,25 +1,27 @@
 async function submitForm(event) {
     event.preventDefault();
     const form = event.target;
-    const btn = document.getElementById('submit-btn');
-    const btnText = btn.querySelector('.btn-text');
-    const btnLoading = btn.querySelector('.btn-loading');
-    const successMsg = document.getElementById('form-success-msg');
-    const errorMsg = document.getElementById('form-error-msg');
-    const fieldsWrapper = document.getElementById('form-fields-wrapper');
+    const isHeroForm = form.id === 'hero-form';
 
-    errorMsg.style.display = 'none';
+    const btn = isHeroForm ? form.querySelector('button[type="submit"]') : document.getElementById('submit-btn');
+    const btnText = btn ? btn.querySelector('.btn-text') : null;
+    const btnLoading = btn ? btn.querySelector('.btn-loading') : null;
+    const successMsg = isHeroForm ? document.getElementById('hero-form-success') : document.getElementById('form-success-msg');
+    const errorMsg = isHeroForm ? document.getElementById('hero-form-error') : document.getElementById('form-error-msg');
+    const fieldsWrapper = isHeroForm ? form.querySelector('.form-row') : document.getElementById('form-fields-wrapper');
+
+    if (errorMsg) errorMsg.style.display = 'none';
     form.classList.remove('show-errors');
 
     if (!form.checkValidity()) {
         form.classList.add('show-errors');
-        errorMsg.style.display = 'block';
+        if (errorMsg) errorMsg.style.display = 'block';
         return;
     }
 
-    btn.disabled = true;
-    btnText.style.display = 'none';
-    btnLoading.style.display = 'inline';
+    if (btn) btn.disabled = true;
+    if (btnText) btnText.style.display = 'none';
+    if (btnLoading) btnLoading.style.display = 'inline';
 
     try {
         const formData = new FormData(form);
@@ -29,17 +31,18 @@ async function submitForm(event) {
         });
 
         if (response.ok) {
-            fieldsWrapper.style.opacity = '0';
+            if (fieldsWrapper) fieldsWrapper.style.opacity = '0';
             setTimeout(() => {
-                fieldsWrapper.style.display = 'none';
-                successMsg.style.display = 'block';
+                if (fieldsWrapper) fieldsWrapper.style.display = 'none';
+                if (isHeroForm && btn) btn.style.display = 'none';
+                if (successMsg) successMsg.style.display = 'block';
             }, 300);
         } else { throw new Error('Failed'); }
     } catch (err) {
-        errorMsg.style.display = 'block';
-        btn.disabled = false;
-        btnText.style.display = 'inline';
-        btnLoading.style.display = 'none';
+        if (errorMsg) errorMsg.style.display = 'block';
+        if (btn) btn.disabled = false;
+        if (btnText) btnText.style.display = 'inline';
+        if (btnLoading) btnLoading.style.display = 'none';
     }
 }
 

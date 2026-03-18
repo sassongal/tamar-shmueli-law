@@ -9,7 +9,6 @@ Allow: /accessibility.html
 Allow: /llms.txt
 Disallow: /.vercel/
 Disallow: /.git/
-Disallow: /assets/
 
 # Sitemap
 Sitemap: https://www.tamar-shmueli.co.il/sitemap.xml

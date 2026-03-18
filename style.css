@@ -1,13 +1,14 @@
-/* 
+/*
  * Attorney Tamar Shmuely Landing Page
  * Theme: Premium, Elegant, Trustworthy
+ * Palette: Indigo (primary) + Gold (accent) + Clean neutrals
  */
 
 /* =========================================
    VARIABLES
    ========================================= */
 :root {
-  /* Brand Colors (from Logo) */
+  /* Brand Colors - Simplified: Indigo + Gold + Plum accent */
   --brand-fuchsia: #de1883;
   --brand-plum: #9b1c82;
   --brand-indigo: #664395;
@@ -15,20 +16,22 @@
   --brand-teal: #139d74;
   --brand-green: #3aa734;
   --brand-lime: #b2c623;
+  --brand-gold: #b08d3e;
+  --brand-gold-light: #d4b368;
 
   /* Neutral / UI Colors */
-  --ink: #2a2a2a;
-  --ink-light: #414141;
-  --muted: #a5a8a8;
-  --soft: #d3d0c8;          /* Warmer soft tone to match cream */
-  --paper: #faf7f2;          /* ✦ Cream base — replaces plain white */
-  --paper-pure: #ffffff;     /* Pure white for form backgrounds */
-  --bg-light: #f2ece3;       /* Slightly deeper warm cream */
-  --bg-warm: #ebe3d8;        /* Section contrast cream */
-  --bg-dark: #1f2229;
+  --ink: #1a1a2e;
+  --ink-light: #353550;
+  --muted: #8b8ba0;
+  --soft: #e2e0d8;
+  --paper: #ffffff;
+  --paper-pure: #ffffff;
+  --bg-light: #f8f7f4;
+  --bg-warm: #f3f1ec;
+  --bg-dark: #1a1a2e;
 
   /* Typography */
-  --font-heading: "Heebo", sans-serif;
+  --font-heading: "Frank Ruhl Libre", serif;
   --font-body: "Assistant", sans-serif;
 
   /* Spacing & Layout */
@@ -81,7 +84,12 @@ h6 {
   color: var(--ink);
   margin-bottom: 0.5em;
   font-weight: 700;
+  letter-spacing: -0.02em;
 }
+
+h1 { font-weight: 900; }
+h2 { font-weight: 700; font-size: 2.8rem; }
+h3 { font-weight: 600; }
 
 p {
   margin-bottom: 1rem;
@@ -147,17 +155,24 @@ a:hover {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, rgba(102, 67, 149, 0.8), rgba(155, 28, 130, 0.8));
-  color: #fff !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.5);
-  border-left: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 10px 30px -5px rgba(102, 67, 149, 0.6);
+  background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('images/cta_watercolor_bg.webp');
+  background-size: cover;
+  background-position: center;
+  color: var(--ink) !important;
+  font-weight: 800;
+  border: 1px solid rgba(102, 67, 149, 0.3);
+  box-shadow: 0 8px 24px -4px rgba(102, 67, 149, 0.2);
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, rgba(102, 67, 149, 0.95), rgba(155, 28, 130, 0.95));
-  box-shadow: 0 15px 40px -5px rgba(102, 67, 149, 0.8);
-  transform: translateY(-5px) scale(1.03);
+  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('images/cta_watercolor_bg.webp');
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 12px 32px -4px rgba(102, 67, 149, 0.3);
+  transform: translateY(-4px) scale(1.02);
+  color: var(--brand-indigo) !important;
 }
 
 .btn-outline {
@@ -244,15 +259,15 @@ a:hover {
    HEADER
    ========================================= */
 .site-header {
-  background-color: rgba(250, 247, 242, 0.96); /* Cream glass */
+  background-color: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 16px rgba(90, 60, 30, 0.08);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
   padding: 1rem 0;
-  border-bottom: 1px solid rgba(90, 60, 30, 0.06);
+  border-bottom: none;
 }
 
 .header-container {
@@ -341,7 +356,7 @@ a:hover {
   padding: 4rem 0 4rem;
   background-image: url('images/hero_bg.webp');
   background-size: cover;
-  background-position: center center;
+  background-position: center top;
   background-repeat: no-repeat;
   overflow: visible;
   position: relative;
@@ -357,11 +372,12 @@ a:hover {
   left: 0;
   width: 100%;
   height: 100%;
+  /* Soft white wash for text contrast over the photo */
   background: linear-gradient(
     to left,
-    rgba(255, 255, 255, 0.25) 0%,
-    rgba(255, 255, 255, 0.20) 50%,
-    rgba(255, 255, 255, 0.15) 100%
+    rgba(255, 255, 255, 0.65) 0%,
+    rgba(255, 255, 255, 0.60) 50%,
+    rgba(255, 255, 255, 0.55) 100%
   );
   z-index: 1;
 }
@@ -417,18 +433,34 @@ a:hover {
 }
 
 .hero-content-right h1 {
-  font-size: clamp(2rem, 5vw, 3.8rem);
-  line-height: 1.25;
-  margin-bottom: 1.5rem;
-  color: #000000;
-  font-weight: 800;
+  font-size: clamp(2.4rem, 5vw, 4.2rem);
+  line-height: 1.15;
+  margin-bottom: 1.8rem;
+  color: #1a1a1a;
+  font-weight: 700;
   text-align: right;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: -0.02em;
+  position: relative;
+  z-index: 2;
 }
 
+/* Elegant serif contrast for the highlight */
 .hero-content-right .highlight {
-  color: #0d0d0d;
-  font-weight: 900;
+  color: var(--brand-indigo);
+  font-weight: 800;
+  display: inline-block;
+  position: relative;
+}
+.hero-content-right .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 0.1em;
+  left: 0;
+  right: 0;
+  height: 0.25em;
+  background-color: rgba(102, 67, 149, 0.15);
+  z-index: -1;
+  border-radius: 2px;
 }
 
 .hero-content-right p {
@@ -698,7 +730,7 @@ a:hover {
 
   .hero {
     background-image: url('images/hero_bg_mobile.webp');
-    background-color: #2a1b3d !important;
+    background-color: var(--paper) !important;
     background-size: cover !important;
     background-position: center !important;
     min-height: 100vh !important;
@@ -709,8 +741,8 @@ a:hover {
   .hero-bg-overlay {
     background: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.20) 0%,
-      rgba(255, 255, 255, 0.15) 100%
+      rgba(255, 255, 255, 0.70) 0%,
+      rgba(255, 255, 255, 0.60) 100%
     );
     opacity: 1 !important;
     visibility: visible !important;
@@ -752,17 +784,20 @@ a:hover {
    TRUST STRIP
    ========================================= */
 .trust-strip {
-  padding: var(--space-sm) 0;
-  background-color: var(--bg-warm);
-  border-top: 1px solid rgba(90, 60, 30, 0.10);
-  border-bottom: 1px solid rgba(90, 60, 30, 0.10);
+  padding: 1.5rem 0;
+  background-color: var(--bg-light);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .trust-strip p {
   text-align: center;
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-  color: var(--ink-light);
+  font-size: 0.85rem;
+  margin-bottom: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
 }
 
 .trust-logos {
@@ -773,41 +808,154 @@ a:hover {
   align-items: center;
 }
 
+.trust-logos a,
 .trust-logos span {
   font-weight: 700;
-  color: var(--ink-light);
-  font-size: 1.2rem;
-  opacity: 1;
-  filter: grayscale(100%);
-  transition: var(--transition);
+  color: var(--muted);
+  font-size: 1.1rem;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
+.trust-logos a:hover,
 .trust-logos span:hover {
   opacity: 1;
   color: var(--brand-indigo);
-  filter: grayscale(0%);
+}
+
+.trust-logos svg {
+  width: 24px;
+  height: 24px;
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+}
+
+.trust-logos a:hover svg {
+  opacity: 1;
 }
 
 /* =========================================
-   WHY US (Features)
+   WHY US - Stats Section
    ========================================= */
 .why-us {
-  padding: var(--space-xl) 0;
-  background-color: var(--paper);
+  padding: var(--space-xl) 0 var(--space-lg);
+  background-color: var(--bg-dark);
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+}
+
+.why-us .section-header h2 {
+  color: #fff;
+}
+
+.why-us .section-header p {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.why-us .section-header h2::after {
+  background: var(--brand-gold);
+}
+
+/* Stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  text-align: center;
+  padding: 2rem 1rem;
   position: relative;
 }
 
-/* Wave shape at top of section */
-.why-us::before {
+.stat-card::after {
   content: '';
   position: absolute;
-  top: -1px;
   left: 0;
-  width: 100%;
-  height: 60px;
-  background: var(--bg-warm);
-  clip-path: ellipse(55% 100% at 50% 0%);
-  pointer-events: none;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.stat-card:first-child::after {
+  display: none;
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--brand-gold-light);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.03em;
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+}
+
+/* Qualities row under stats */
+.qualities-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.quality-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.quality-item svg {
+  flex-shrink: 0;
+  color: var(--brand-gold-light);
+  margin-top: 2px;
+}
+
+.quality-item h4 {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+  font-weight: 700;
+}
+
+.quality-item p {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stat-card:nth-child(3)::after { display: none; }
+  .stat-number { font-size: 2.5rem; }
+  .qualities-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .qualities-row {
+    grid-template-columns: 1fr;
+  }
 }
 
 .section-header {
@@ -815,9 +963,10 @@ a:hover {
 }
 
 .section-header h2 {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   position: relative;
   display: inline-block;
+  letter-spacing: -0.03em;
 }
 
 /* Decorative underline on section h2 */
@@ -827,9 +976,9 @@ a:hover {
   bottom: -10px;
   right: 0;
   width: 60px;
-  height: 4px;
+  height: 3px;
   border-radius: 2px;
-  background: linear-gradient(to left, var(--brand-fuchsia), var(--brand-indigo));
+  background: var(--brand-gold);
 }
 
 .center .section-header h2::after,
@@ -1435,8 +1584,8 @@ a:hover {
 .cta-section {
   padding: var(--space-xl) 0;
   position: relative;
-  background-color: var(--brand-indigo);
-  color: var(--paper);
+  background-color: var(--paper);
+  color: var(--ink);
 }
 
 .cta-bg {
@@ -1445,9 +1594,10 @@ a:hover {
   left: 0;
   width: 100%;
   height: 100%;
+  background-image: url('images/cta_watercolor_bg.webp');
   background-size: cover;
   background-position: center;
-  opacity: 0.15; /* Subtly mix image with color */
+  opacity: 0.65;
 }
 
 .cta-overlay {
@@ -1456,8 +1606,8 @@ a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, var(--brand-indigo), var(--brand-plum));
-  opacity: 0.85;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.5));
+  opacity: 1;
 }
 
 .cta-container {
@@ -1470,12 +1620,12 @@ a:hover {
 }
 
 .cta-content h2 {
-  color: var(--paper);
+  color: var(--ink);
   font-size: 3rem;
 }
 
 .cta-content p {
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--ink-light);
   font-size: 1.3rem;
 }
 
@@ -2178,29 +2328,74 @@ p {
 .text-reveal:nth-child(6) { transition-delay: 500ms; }
 
 /* ===========================
-   SERVICE CARDS - Clean Equal Grid
-   NO Bento Grid, NO Magnetic Hover
+   SERVICE CARDS - Bento Grid with Numbering
    =========================== */
 
 .services-grid,
 .grid-services {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: var(--space-4);  /* 42px */
-  grid-auto-rows: 1fr;  /* EQUAL HEIGHT - Professional look */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* Bento: first card spans 2 columns */
+.grid-services .service-card:nth-child(1) {
+  grid-column: span 2;
+}
+
+@media (max-width: 900px) {
+  .grid-services {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-services .service-card:nth-child(1) {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid-services {
+    grid-template-columns: 1fr;
+  }
+  .grid-services .service-card:nth-child(1) {
+    grid-column: span 1;
+  }
 }
 
 .service-card {
   position: relative;
   background: var(--paper-pure);
   border-radius: var(--radius-md);
-  padding: var(--space-4);
+  padding: 2rem 2rem 2rem 2rem;
   border-right: 3px solid var(--card-accent-color);
-  transition: all var(--transition-base);
-
-  /* ✅ Visible immediately - no scroll reveal needed */
+  border-top: none;
+  transition: all 0.3s ease;
   opacity: 1;
   transform: translateY(0);
+  counter-increment: service-counter;
+}
+
+/* Service number overlay */
+.service-card::after {
+  content: "0" counter(service-counter);
+  position: absolute;
+  top: 1rem;
+  left: 1.25rem;
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.04);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.service-card:hover::after {
+  color: hsla(var(--card-h), var(--card-s), var(--card-l), 0.1);
+}
+
+.grid-services {
+  counter-reset: service-counter;
 }
 
 /* Layer 2 - Hover State with HSL background gradient */
